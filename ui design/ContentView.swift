@@ -8,6 +8,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var themeManager = ThemeManager()
     @State private var showOnboarding = true
+    @State private var columnCount: Int = 2
     @State private var taskSections: [TaskSection] = [
         TaskSection(
             title: "每日清洁",
@@ -42,7 +43,7 @@ struct ContentView: View {
             OnboardingView(showOnboarding: $showOnboarding)
         } else {
             TabView {
-                HomeView(taskSections: $taskSections)
+                HomeView(taskSections: $taskSections, columnCount: $columnCount)
                     .tabItem {
                         Label("首页", systemImage: "house")
                     }
